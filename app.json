@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Semesterly",
-    "slug": "Semesterly",
+    "slug": "semesterly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,6 +20,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a66b3e91-9a7d-4e08-af3c-cd0cf652382e"
+      }
+    },
+    "owner": "hannas-team"
   }
 }
