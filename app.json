@@ -26,6 +26,11 @@
         "projectId": "a66b3e91-9a7d-4e08-af3c-cd0cf652382e"
       }
     },
-    "owner": "hannas-team"
+    "owner": "hannas-team",
+    "plugins": [
+      "expo-font",
+      "expo-status-bar",
+      "expo-secure-store"
+    ]
   }
 }
