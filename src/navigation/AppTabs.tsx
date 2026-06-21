@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../constants/colors';
 import ScheduleScreen from '../screens/ScheduleScreen';
 import PlaceholderScreen from '../screens/PlaceholderScreen';
+import StudyStack from './StudyStack';
 import type { AppTabsParamList } from './types';
 
 const Tab = createBottomTabNavigator<AppTabsParamList>();
@@ -27,9 +28,7 @@ export default function AppTabs() {
       })}
     >
       <Tab.Screen name="Schedule" component={ScheduleScreen} />
-      <Tab.Screen name="Study">
-        {() => <PlaceholderScreen label="Study" />}
-      </Tab.Screen>
+      <Tab.Screen name="Study" component={StudyStack} options={{ headerShown: false }} />
       <Tab.Screen name="Friends">
         {() => <PlaceholderScreen label="Friends" />}
       </Tab.Screen>

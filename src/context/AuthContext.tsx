@@ -78,24 +78,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUp = useCallback(
     async (email: string, password: string, displayName: string) => {
-      const { data, error } = await supabase.auth.signUp({ email, password });
-
-      if (error) {
-        return { error: error.message };
-      }
-
-      if (!data.user) {
-        return { error: 'Something went wrong creating your account.' };
-      }
-
-      const { error: profileError } = await supabase.from('profiles').insert({
-        id: data.user.id,
-        display_name: displayName,
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: displayName }, // trigger reads this
+        },
       });
 
-      if (profileError) {
-        return { error: profileError.message };
-      }
+      if (error) return { error: error.message };
+      if (!data.user) return { error: 'Something went wrong creating your account.' };
+
+      // Wait briefly for the trigger to fire and create the profile
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       await fetchProfile(data.user.id);
       return { error: null };

@@ -16,3 +16,8 @@ export type AppTabsParamList = {
   Friends: undefined;
   Profile: undefined;
 };
+
+export type StudyStackParamList = {
+  Timer: undefined;
+  SessionHistory: undefined;
+};
