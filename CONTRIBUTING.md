@@ -23,4 +23,18 @@ Then press `i`, `a`, or `w` to run on iOS, Android, or web (or run `npm run ios`
 
 ## Environment variables
 
-Copy `.env.local` (not committed) and fill in the Supabase keys before running the app.
+Create a `.env.local` file in the project root (not committed) with:
+
+```
+EXPO_PUBLIC_SUPABASE_URL=your_project_url
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+```
+
+Both values are found in your Supabase project under Settings > API.
+
+## Database changes
+
+- `supabase/schema.sql` is the full, cumulative schema — run it in the Supabase SQL editor to set up a fresh project.
+- `supabase/migrations/` holds incremental migrations for project databases that already have an earlier schema applied.
+
+When you add or change tables, update both: append the change to `schema.sql` so it stays a complete snapshot, and add a new numbered file under `migrations/` (e.g. `003_*.sql`) with just that change.
